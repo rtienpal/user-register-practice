@@ -1,9 +1,10 @@
-import React, { useState } from "react"
+import React, {useState} from "react"
 import { Link } from "react-router-dom"
-import Validation from "./LoginValidation"
+import Validation from "./SignUpValidation"
 
-function Login() {
+function SignUp() {
   const [values, setValues] = useState({
+    name: "",
     email: "",
     password: "",
   })
@@ -24,9 +25,22 @@ function Login() {
   return (
     <div className="d-flex justify-content-center align-items-center bg-primary vh-100 vw-100">
       <div className="bg-white p-3 rounded">
-        <h2 className="mb-5 d-flex justify-content-center">Sign-In</h2>
+        <h2 className="mb-5">Sign-Up</h2>
         <form action="" onSubmit={handleSubmit}>
-          <div className="mb-3">
+          <div class="mb-3">
+            <label htmlFor="Name">
+              <strong>Name</strong>
+            </label>
+            <input
+              className="form-control rounded-0"
+              name="name"
+              onChange={handleChange}
+              placeholder="Enter Name"
+              type="text"
+            />
+            {errors.name && <span className="text-danger">{errors.name}</span>}
+          </div>
+          <div class="mb-3">
             <label htmlFor="email">
               <strong>Email</strong>
             </label>
@@ -48,8 +62,8 @@ function Login() {
             <input
               className="form-control rounded-0"
               name="password"
-              placeholder="Enter Password"
               onChange={handleChange}
+              placeholder="Enter Password"
               type="password"
             />
             {errors.password && (
@@ -57,12 +71,12 @@ function Login() {
             )}
           </div>
 
-          <button type="submit" className="btn btn-success w-100">
-            <strong>Log In</strong>
+          <button className="btn btn-success w-100">
+            <strong>Sign Up</strong>
           </button>
           <p>You agree to our terms and policies.</p>
-          <Link to="/signup" className="btn btn-default border w-100 bg-light">
-            Create Account
+          <Link to="/" className="btn btn-default border w-100 bg-light">
+            Login
           </Link>
         </form>
       </div>
@@ -70,4 +84,4 @@ function Login() {
   )
 }
 
-export default Login
+export default SignUp
